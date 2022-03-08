@@ -3,7 +3,8 @@
     "start": "webpack -w",
     "server": "nodemon server/server.js -w",
     "test": "jest -c jest.config.js --watch",
-    "init": "bash init.sh"
+    "init": "bash init.sh",
+    "stop": "fuser -k 3000/tcp"
   },
   "dependencies": {
     "axios": "^0.25.0",
