@@ -26,7 +26,7 @@ function RelatedItemsParent() {
             <ModalHeader>Comparing</ModalHeader>
             <ModalRow>
               <ModalImageLeft>
-                <ModalImage src={prodStyles[0].photos[0].thumbnail_url || 'https://anthemprep.greatheartsamerica.org/wp-content/uploads/sites/12/2016/12/default-placeholder.png'} alt="Item" />
+                <ModalImage src={prodStyles[0].photos.length !== 0 ? prodStyles[0].photos[0].thumbnail_url : 'https://anthemprep.greatheartsamerica.org/wp-content/uploads/sites/12/2016/12/default-placeholder.png'} alt="Item" />
               </ModalImageLeft>
               <ModalImageRight>
                 <ModalImage src={modalData.thumbnail} alt="Item" />

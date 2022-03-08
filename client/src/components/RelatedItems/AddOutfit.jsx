@@ -12,7 +12,7 @@ function AddOutfitCard(props) {
   function onButtonClick() {
     const itemDetails = item || {
       ...prodDetails,
-      thumbnail: prodStyles[0].photos[0].thumbnail_url || 'https://anthemprep.greatheartsamerica.org/wp-content/uploads/sites/12/2016/12/default-placeholder.png',
+      thumbnail: prodStyles[0].photos.length !== 0 ? prodStyles[0].photos[0].thumbnail_url : 'https://anthemprep.greatheartsamerica.org/wp-content/uploads/sites/12/2016/12/default-placeholder.png',
       original_price: prodStyles[0].original_price,
       sale_price: prodStyles[0].sale_price,
     };

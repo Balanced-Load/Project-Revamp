@@ -26,10 +26,12 @@ function Style(props) {
           }}
           />
         ) : null}
-      <StyleImg src={props.eachStyle.photos[0].thumbnail_url} onClick={handleClick} />
+      <StyleImg src={props.eachStyle.photos.length !== 0 ? props.eachStyle.photos[0].thumbnail_url : 'https://anthemprep.greatheartsamerica.org/wp-content/uploads/sites/12/2016/12/default-placeholder.png'} onClick={handleClick} />
     </div>
   );
 }
+// props.eachStyle.photos[0].thumbnail_url
+
 
 export default Style;
 
