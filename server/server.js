@@ -11,11 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(DIST_DIR));
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// const headers = { Authorization };
-// const config = { headers };
+const headers = '';
+const config = { headers };
 
 app.get('/products', (req, res) => {
   axios.get('http://54.215.213.82/products')
@@ -94,13 +94,13 @@ app.get('/reviews/meta', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-  const postConfig = {
-    headers: {
-      Authorization,
-      'Content-Type': 'application/json',
-    },
-  };
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', JSON.stringify(req.body), postConfig)
+  // const postConfig = {
+  //   headers: {
+  //     Authorization,
+  //     'Content-Type': 'application/json',
+  //   },
+  // };
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', JSON.stringify(req.body), config)
     .then((result) => {
       res.send(result.data);
     })
@@ -201,4 +201,5 @@ app.put('/answers/:id/report', (req, res) => {
     .catch((err) => res.status(500).send(err));
 });
 
+// eslint-disable-next-line no-console
 app.listen(PORT, () => { console.log(`Listening to port ${PORT}`); });

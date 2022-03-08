@@ -2,3 +2,4 @@ node_modules
 apikey.js
 client/dist/bundle.js
 coverage
+bundle.js.LICENSE.txt
