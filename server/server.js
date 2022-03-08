@@ -19,28 +19,28 @@ const config = { headers };
 
 // returns all products
 app.get('/products', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products', config)
+  axios.get('54.215.213.82/products', config)
     .then((result) => { res.send(result.data); })
     .catch(() => { res.sendStatus(500); });
 });
 
 // returns product level information for a specific product id
 app.get('/products/:id', (req, res) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${req.params.id}`, config)
+  axios.get(`54.215.213.82/products/${req.params.id}`, config)
     .then((result) => { res.send(result.data); })
     .catch(() => res.sendStatus(500));
 });
 
 // --- For Related Items ---
 app.get('/products/:id/related', (req, res) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${req.params.id}/related`, config)
+  axios.get(`54.215.213.82/products/${req.params.id}/related`, config)
     .then((result) => res.send(result.data))
     .catch(() => res.sendStatus(500));
 });
 
 app.get('/products/:id/relatedinfo', (req, res) => {
-  const axiosrequest1 = axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${req.params.id}`, config);
-  const axiosrequest2 = axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${req.params.id}/styles`, config);
+  const axiosrequest1 = axios.get(`54.215.213.82/products/${req.params.id}`, config);
+  const axiosrequest2 = axios.get(`54.215.213.82/products/${req.params.id}/styles`, config);
 
   axios.all([axiosrequest1, axiosrequest2])
     .then(axios.spread((res1, res2) => {
@@ -59,7 +59,7 @@ app.get('/products/:id/relatedinfo', (req, res) => {
 
 // returns all the styles available for the given product
 app.get('/products/:id/styles', (req, res) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${req.params.id}/styles`, config)
+  axios.get(`54.215.213.82/products/${req.params.id}/styles`, config)
     .then((result) => { res.send(result.data); })
     .catch(() => { res.sendStatus(500); });
 });
