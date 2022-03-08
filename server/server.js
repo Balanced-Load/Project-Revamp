@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
-const { Authorization } = require('../apikey');
+// const { Authorization } = require('../apikey');
 
 const app = express();
 const PORT = 3000;
@@ -14,33 +14,32 @@ app.use(express.static(DIST_DIR));
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 
-const headers = { Authorization };
-const config = { headers };
+// const headers = { Authorization };
+// const config = { headers };
 
-// returns all products
 app.get('/products', (req, res) => {
-  axios.get('54.215.213.82/products', config)
+  axios.get('http://54.215.213.82/products')
     .then((result) => { res.send(result.data); })
     .catch(() => { res.sendStatus(500); });
 });
 
 // returns product level information for a specific product id
 app.get('/products/:id', (req, res) => {
-  axios.get(`54.215.213.82/products/${req.params.id}`, config)
+  axios.get(`http://54.215.213.82/products/${req.params.id}`)
     .then((result) => { res.send(result.data); })
     .catch(() => res.sendStatus(500));
 });
 
 // --- For Related Items ---
 app.get('/products/:id/related', (req, res) => {
-  axios.get(`54.215.213.82/products/${req.params.id}/related`, config)
+  axios.get(`http://54.215.213.82/products/${req.params.id}/related`)
     .then((result) => res.send(result.data))
     .catch(() => res.sendStatus(500));
 });
 
 app.get('/products/:id/relatedinfo', (req, res) => {
-  const axiosrequest1 = axios.get(`54.215.213.82/products/${req.params.id}`, config);
-  const axiosrequest2 = axios.get(`54.215.213.82/products/${req.params.id}/styles`, config);
+  const axiosrequest1 = axios.get(`http://54.215.213.82/products/${req.params.id}`);
+  const axiosrequest2 = axios.get(`http://54.215.213.82/products/${req.params.id}/styles`);
 
   axios.all([axiosrequest1, axiosrequest2])
     .then(axios.spread((res1, res2) => {
@@ -59,7 +58,7 @@ app.get('/products/:id/relatedinfo', (req, res) => {
 
 // returns all the styles available for the given product
 app.get('/products/:id/styles', (req, res) => {
-  axios.get(`54.215.213.82/products/${req.params.id}/styles`, config)
+  axios.get(`http://54.215.213.82/products/${req.params.id}/styles`)
     .then((result) => { res.send(result.data); })
     .catch(() => { res.sendStatus(500); });
 });
